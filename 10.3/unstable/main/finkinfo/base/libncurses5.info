@@ -1,6 +1,6 @@
 Package: libncurses5
 Version: 5.4-20041023
-Revision: 2
+Revision: 3
 GCC: 3.3
 #Source: mirror:gnu:ncurses/ncurses-5.4.tar.gz
 Source: mirror:sourceforge:fink/ncurses-5.4.tar.gz
