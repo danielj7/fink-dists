@@ -5,7 +5,7 @@ Source: gnu
 Source-MD5: 39053e044b18ecd0627f80fbe7cfeaad
 Essential: yes
 Depends: base-files
-Maintainer: Fink Core Group <fink-core@lists.sourceforge.net>
+Maintainer: Max Horn <max@quendi.de>
 Patch: %f.patch
 PatchScript: mv -f INSTALL INSTALL.txt
 CompileScript: <<
