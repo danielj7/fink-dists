@@ -12,7 +12,7 @@ PatchScript: <<
 <<
 CompileScript: python setup.py build   
 InstallScript: <<
- pythonx setup.py install --prefix=%i
+ python setup.py install --prefix=%i
  mkdir -p %i/share/doc/%n/HTML
  mkdir -p %i/share/doc/%n/PDF
  cp -R Examples %i/share/doc/%n
