@@ -1,10 +1,12 @@
-Package: convert-tnef-pm
+Package: convert-tnef-pm560
 Version: 0.17
 Revision: 1
-Depends: io-stringy-pm, mime-tools-pm
+Replaces: convert-tnef-pm (<= 0.17-1), convert-tnef-pm581
+Depends: io-stringy-pm, mime-tools-pm560
+BuildDepends: darwin (<< 7.0.0-1) | perl560-core, fink (>= 0.20.1-1)
 Source: mirror:cpan:authors/id/D/DO/DOUGW/Convert-TNEF-%v.tar.gz
 Source-MD5: 31cddf42fae9495b4a686b17ec68d7e0
-Type: perl
+Type: perl 5.6.0
 UpdatePOD: true
 DocFiles: Changes MANIFEST README
 Description: Convert Microsoft mail attachments

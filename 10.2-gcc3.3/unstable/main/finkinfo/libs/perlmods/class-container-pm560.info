@@ -1,13 +1,15 @@
-Package: class-container-pm
+Package: class-container-pm560
 Version: 0.10
-Revision: 2
+Revision: 12
+Replaces: class-container-pm (<= 0.10-12), class-container-pm581
 Description: Perl module to glue object frameworks together
-Type: perl
+BuildDepends:  darwin (<< 7.0.0-1) | perl560-core, fink (>= 0.20.1-1)
+Type: perl 5.6.0
 License: Artistic
 Maintainer: Christian Schaffner <chris01@users.sourceforge.net>
 
 # Dependencies:
-Depends: params-validate-pm (>= 0.59-2), scalar-list-utils-pm | perl580-core
+Depends: params-validate-pm560 (>= 0.59-2), scalar-list-utils-pm560
 
 # Unpack Phase:
 Source: mirror:cpan:authors/id/K/KW/KWILLIAMS/Class-Container-%v.tar.gz
