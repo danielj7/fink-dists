@@ -15,20 +15,16 @@ Patch: %f.patch
 ConfigureParams: --enable-compat185 --enable-cxx --includedir=%p/include/db4
 GCC: 3.3
 CompileScript: <<
-#!/bin/sh
-  cd build_unix
-  ../dist/configure %c
-  make UTIL_PROGS=
-  rm .libs/libdb-4.0.dylib
-  make SOLINK="cc -dynamiclib -compatibility_version 4.0 -current_version 4.0.14 -install_name %p/lib/libdb-4.0.dylib" SOFLAGS="" libso_target=".libs/libdb-4.0.dylib" UTIL_PROGS=""
-  rm .libs/libdb_cxx-4.0.dylib
-  make XSOLINK="c++ -dynamiclib -compatibility_version 4.0 -current_version 4.0.14 -install_name %p/lib/libdb_cxx-4.0.dylib" SOFLAGS="" libxso_target=".libs/libdb_cxx-4.0.dylib" UTIL_PROGS=""
-  make
+(cd build_unix;  ../dist/configure %c)
+(cd build_unix; make UTIL_PROGS=)
+(cd build_unix; rm .libs/libdb-4.0.dylib)
+(cd build_unix; make SOLINK="cc -dynamiclib -compatibility_version 4.0 -current_version 4.0.14 -install_name %p/lib/libdb-4.0.dylib" SOFLAGS="" libso_target=".libs/libdb-4.0.dylib" UTIL_PROGS="")
+(cd build_unix; rm .libs/libdb_cxx-4.0.dylib)
+(cd build_unix; make XSOLINK="c++ -dynamiclib -compatibility_version 4.0 -current_version 4.0.14 -install_name %p/lib/libdb_cxx-4.0.dylib" SOFLAGS="" libxso_target=".libs/libdb_cxx-4.0.dylib" UTIL_PROGS="")
+(cd build_unix; make)
 <<
 InstallScript: <<
-#!/bin/sh
-  cd build_unix
-  make install prefix=%i docdir=%i/share/doc/db4-doc/docs includedir=%i/include/db4
+(cd build_unix; make install prefix=%I docdir=%I/share/doc/db4-doc/docs includedir=%I/include/db4)
 <<
 SplitOff: <<
  Package: %N-shlibs
@@ -47,14 +43,14 @@ SplitOff2: <<
  Conflicts: db3-bin, db31 (<< 3.1.17-2), db41-bin, db41-ssl-bin, db4-ssl-bin
  Replaces: db3-bin, db4 (<< 4.0.14-4), db31 (<< 3.1.17-2), db41-bin, db41-ssl-bin, db4-ssl-bin
  Description: Binary utilities for db4
- Files: bin
+ Files: bin/
  DocFiles: LICENSE
 <<
 SplitOff3: <<
  Package: %N-doc
  Replaces: %N (<< 4.0.14-4)
  Description: Documentation for db4
- Files: share/doc/db4-doc
+ Files: share/doc/db4-doc/
  DocFiles: LICENSE
 <<
 DocFiles: LICENSE README

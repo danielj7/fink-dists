@@ -15,8 +15,6 @@ License: Restrictive/Distributable
 SourceDirectory: gs%v
 Patch: %f.patch
 PatchScript: ln -s src/unix-gcc.mak makefile
-NoSetMAKEFLAGS: true
-SetMAKEFLAGS: -j1
 CompileScript: make prefix=%p CC=cc
 InstallScript: make install prefix=%i
  mkdir -p %i/share/doc                                                  

@@ -22,5 +22,5 @@ a Fink installation. It makes sure the usual directories are present
 and have the right permissions.
 <<
 License: GPL
-Maintainer: Fink Core Group <fink-core@lists.sourceforge.net>
+Maintainer: Max Horn <max@quendi.de>
 Homepage: http://fink.sourceforge.net/
