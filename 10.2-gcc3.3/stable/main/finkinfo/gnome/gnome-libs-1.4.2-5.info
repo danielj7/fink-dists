@@ -15,7 +15,6 @@ ConfFiles: <<
 <<
 ConfigureParams: --disable-test-gnome --mandir=%p/share/man
 SetCFLAGS: -O3 -fstrict-aliasing -funroll-loops
-SetMAKEFLAGS: -j1
 InstallScript: <<
   make install DESTDIR=%d docdir=%p/share/doc/%n
   (cd %i/share/pixmaps; mv gnome-default-dlg.png gnome-default-dlg.png.%n)
