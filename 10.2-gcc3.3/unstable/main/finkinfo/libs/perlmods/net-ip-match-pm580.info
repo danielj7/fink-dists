@@ -1,11 +1,13 @@
-Package: net-ip-match-pm
+Package: net-ip-match-pm580
 Version: 0.01
-Revision: 1
+Revision: 2
 Source: mirror:cpan:authors/id/M/MA/MARCEL/Net-IP-Match-%v.tar.gz
 Source-MD5: 6a277b87ed9fd4ce7c1ebc6b934b3f83
 SourceDirectory: Net-IP-Match-%v
-Depends: filter-simple-pm
-Type: perl
+Depends: filter-simple-pm580 | perl580-core
+BuildDepends: perl580-core, fink (>= 0.20.1-1)
+Replaces: net-ip-match-pm (<= 0.01-2), net-ip-match-pm560
+Type: perl 5.8.0
 UpdatePOD: true
 DocFiles: README MANIFEST
 Description: Extreme High Speed matching for IP Ranges,

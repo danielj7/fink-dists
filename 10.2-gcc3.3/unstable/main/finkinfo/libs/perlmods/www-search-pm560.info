@@ -1,16 +1,16 @@
-Package: www-search-pm
-Version: 2.38
-Revision: 2
+Package: www-search-pm560
+Version: 2.46
+Revision: 1
 ###
-Depends: libwww-pm (>= 5.69-3), user-pm, uri-pm (>= 1.23-2), mime-tools-pm (>= 5.411a-3), test-inline-pm (>= 0.15-2), test-simple-pm | perl580-core, html-parser-pm (>= 3.27-3), html-tree-pm, soap-lite-pm (>= 0.55-2) | soap-lite-ssl-pm (>= 0.55-2), jcode-pm (>= 0.82-3)
+Depends: libwww-pm (>= 5.69-3), user-pm, uri-pm560 (>= 1.23-2), mime-tools-pm560 (>= 5.411a-3), test-inline-pm (>= 0.15-2), test-simple-pm, html-parser-pm (>= 3.27-3), html-tree-pm, soap-lite-pm560 (>= 0.55-2) | soap-lite-ssl-pm560 (>= 0.55-2), jcode-pm (>= 0.82-3)
+BuildDepends: darwin (<< 7.0.0-1) | perl560-core
+Replaces: www-search-pm (<= 2.38-2)
 ###
 Source: mirror:cpan:authors/id/M/MT/MTHURN/WWW-Search-%v.tar.gz
-Source-MD5: 7d33daf2b3d6efbb9d15c4797e730af6
+Source-MD5: 0a0356c12874e989c87b5d777b7cefbb
 ###
-Type: perl
+Type: perl 5.6.0
 UpdatePOD: true
-###
-Patch: %f.patch
 ###
 DocFiles: ChangeLog MANIFEST README*
 ###

@@ -1,13 +1,15 @@
-Package: mail-folder-pm
+Package: mail-folder-pm560
 Version: 0.07
 Revision: 1
 ###
-Depends: timedate-pm, file-sync-pm, mime-tools-pm
+Depends: timedate-pm, file-sync-pm, mime-tools-pm560
+BuildDepends: darwin (<< 7.0.0-1) | perl560-core, fink (>= 0.20.1-1)
+Replaces: mail-folder-pm (<= 0.07-1), mail-folder-pm581
 ###
 Source: mirror:cpan:authors/id/K/KJ/KJOHNSON/MailFolder-%v.tar.gz
 Source-MD5: 2c7439acda914402ae5f3060a67ec1da
 ###
-Type: perl
+Type: perl 5.6.0
 UpdatePOD: true
 ###
 Patch: %n.patch
