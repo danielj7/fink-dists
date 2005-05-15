@@ -7,8 +7,6 @@ SourceDirectory: xc/lib/Xaw3d
 BuildDepends: x11-dev
 Depends: x11
 Patch: %f.patch
-NoSetMAKEFLAGS: true
-SetMAKEFLAGS: -j1
 CompileScript: <<
  xmkmf
  ln -s .. X11
