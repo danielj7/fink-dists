@@ -2,3 +2,4 @@ debs
 dists
 old
 override
+override.lock
