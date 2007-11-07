@@ -1,6 +1,6 @@
 Package: openslp-ssl
 Version: 1.0.9a
-Revision: 4
+Revision: 5
 BuildDepends: openssl097-dev
 Depends: %n-shlibs
 Replaces: openslp
