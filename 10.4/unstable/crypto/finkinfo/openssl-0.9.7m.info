@@ -1,9 +1,9 @@
 Package: openssl
 Version: 0.9.7m
-Revision: 5
+Revision: 4
 BuildDepends: fink (>= 0.24.12-1)
 Depends: %N097-shlibs (= %v-%r)
-Replaces: openssl097, openssl
+Replaces: openssl097
 Source: mirror:custom:source/openssl-%v.tar.gz
 CustomMirror: <<
   Primary:   http://www.openssl.org/
