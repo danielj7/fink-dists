@@ -1,9 +1,9 @@
 Info2:<<
 Package: git
 Version: 1.7.2
-Revision: 1001
-Distribution: 10.6
-Type: perl (5.10.0)
+Revision: 1
+Distribution: 10.4
+Type: perl (5.8.6)
 
 Depends: <<
 	email-valid-pm%type_pkg[perl],
@@ -61,9 +61,9 @@ InfoTest: <<
     #!/bin/bash -ev
     if [ $UID = 0 ]; then
       #Some tests fail when run as root.
-      NO_FINK=1 NO_DARWIN_PORTS=1 NO_MSGFMT=1 NO_PYTHON=1 GIT_SKIP_TESTS='t0001.25 t0004.2 t0004.3 t0004.4 t0004.5 t1004.13 t3700.21 t3700.22 t3700.23 t3700.24 t3700.25 t4201.2 t7300.26' make -k test TCLTK_PATH=/usr/bin/wish prefix=%p || exit 2
+      NO_FINK=1 NO_DARWIN_PORTS=1 NO_MSGFMT=1 NO_PYTHON=1 GIT_SKIP_TESTS='t0001.25 t0004.2 t0004.3 t0004.4 t0004.5 t1004.13 t3700.21 t3700.22 t3700.23 t3700.24 t3700.25 t4201.2 t7300.26 t7006' make -k test TCLTK_PATH=/usr/bin/wish prefix=%p || exit 2
     else
-      NO_FINK=1 NO_DARWIN_PORTS=1 NO_MSGFMT=1 NO_PYTHON=1 GIT_SKIP_TESTS="t4201.2" make -k test TCLTK_PATH=/usr/bin/wish prefix=%p || exit 2
+      NO_FINK=1 NO_DARWIN_PORTS=1 NO_MSGFMT=1 NO_PYTHON=1 GIT_SKIP_TESTS="t4201.2 t7006" make -k test TCLTK_PATH=/usr/bin/wish prefix=%p || exit 2
     fi
   <<
   TestSuiteSize: large
