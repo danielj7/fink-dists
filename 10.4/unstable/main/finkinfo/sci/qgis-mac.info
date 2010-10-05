@@ -3,7 +3,7 @@ Info2: <<
 Package: qgis-mac%type_pkg[pgsql]%type_pkg[grass]
 Type: pgsql (. -pgsql), grass (. -grass)
 Architecture: powerpc, i386, x86_64
-Distribution: 10.4
+Distribution: 10.4, 10.5, 10.6
 Conflicts: qgis-mac, qgis-mac-pgsql, qgis-mac-grass, qgis-mac-pgsql-grass
 Replaces: qgis-mac, qgis-mac-pgsql, qgis-mac-grass, qgis-mac-pgsql-grass
 Suggests: r-base (>=2.8.0-1), rpy2-py26
