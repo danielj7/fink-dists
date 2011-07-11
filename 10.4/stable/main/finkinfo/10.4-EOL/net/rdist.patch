@@ -1,0 +1,18 @@
+diff -Naur rdist-6.1.5/support/rdistcf.pl rdist-6.1.5.fink/support/rdistcf.pl
+--- rdist-6.1.5/support/rdistcf.pl	Tue Feb 15 04:20:34 1994
++++ rdist-6.1.5.fink/support/rdistcf.pl	Sat Aug 14 06:04:00 2004
+@@ -1,4 +1,4 @@
+-#! /usr/usc/bin/perl
++#! /usr/bin/perl
+ #
+ # $Id$
+ #
+diff -Naur rdist-6.1.5/support/rdistvf.pl rdist-6.1.5.fink/support/rdistvf.pl
+--- rdist-6.1.5/support/rdistvf.pl	Tue Feb 15 04:20:40 1994
++++ rdist-6.1.5.fink/support/rdistvf.pl	Sat Aug 14 06:03:38 2004
+@@ -1,4 +1,4 @@
+-#!/usr/usc/bin/perl
++#!/usr/bin/perl
+ #
+ # $Id$
+ #
