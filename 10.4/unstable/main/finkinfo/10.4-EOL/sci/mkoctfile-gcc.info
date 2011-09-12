@@ -1,6 +1,6 @@
 Info2: <<
 Package: mkoctfile%type_pkg[oct]-gcc%type_pkg[gcc]%type_pkg[-atlas]
-Type: gcc (4.6), oct(3.0.5 3.2.4), -atlas(.), nosource
+Type: gcc (4.6), oct(3.0.5 3.2.4), -atlas(boolean), nosource
 
 Version: 1.0.1
 Revision: 1
