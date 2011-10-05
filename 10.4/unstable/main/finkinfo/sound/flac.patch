@@ -3,7 +3,7 @@ diff -ruN flac-1.2.1/patches/fixrpath.sh flac-1.2.1.new/patches/fixrpath.sh
 +++ flac-1.2.1.new/patches/fixrpath.sh	2008-02-18 10:51:07.000000000 -0500
 @@ -0,0 +1,28 @@
 +#!/bin/sh
-+# $Id: fixrpath,v 1.1 2004/05/27 10:48:25 kobras Exp $
++# $Id$
 +# libtool -rpath workaround based on a suggestion by Yann Dirson
 +# <dirson@debian.org>
 +#
