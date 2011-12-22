@@ -329,7 +329,7 @@ diff -Nurd bible.orig/tsl.c bible/tsl.c
  
 @@ -109,8 +112,6 @@
  
- static char rcs_ident[]="@(#)$Header: tsl.c,v 1.9 93/04/26 11:18:14 chip Exp $";
+ static char rcs_ident[]="@(#)$Header$";
  
 -char *malloc();
 -char *strtok();
