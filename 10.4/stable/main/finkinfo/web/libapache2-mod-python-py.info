@@ -1,7 +1,7 @@
 Info2: <<
 
 #=========================================================================
-# $Id: libapache2-mod-python-py.info 512 2007-05-14 04:20:20Z matt $
+# $Id$
 Package: libapache2-mod-python-py%type_pkg[python]
 Version: 3.3.1
 Revision: 3

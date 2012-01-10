@@ -1,7 +1,7 @@
 Info2: <<
 
 #=========================================================================
-# $Id: libapache2-mod-python-doc.info 483 2007-02-27 22:32:05Z matt $
+# $Id$
 Package: libapache2-mod-python-doc
 Version: 3.3.1
 Revision: 2
