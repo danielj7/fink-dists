@@ -6474,11 +6474,11 @@ diff -u -Naur eperl-2.2.14/configure.in eperl-2.2.14.fink/configure.in
  dnl #
  
  AC_PREREQ(2.10)dnl
--AC_REVISION($Revision: 2.0$)
+-AC_REVISION($Revision$)
 -echo "Configuring for ePerl `./etc/newvers -l c -D eperl_version.c`"
 -
 -AC_CONFIG_AUX_DIR(etc)
-+AC_REVISION($Revision: 1.9 $)
++AC_REVISION($Revision$)
  AC_INIT(README)
  AC_CONFIG_HEADER(config_ac.h)dnl
  AC_PREFIX_DEFAULT(/usr/local)
@@ -8689,7 +8689,7 @@ diff -u -Naur eperl-2.2.14/eperl_version.c eperl-2.2.14.fink/eperl_version.c
 +    "ePerl 2.2.14 (02-Aug-1998)",
 +    "ePerl/2.2.14",
 +    "@(#)ePerl 2.2.14 (02-Aug-1998)",
-+    "$Id: ePerl 2.2.14 (02-Aug-1998) $"
++    "$Id$"
 +};
  
 -/* for logfiles, etc. */
@@ -8710,7 +8710,7 @@ diff -u -Naur eperl-2.2.14/eperl_version.c eperl-2.2.14.fink/eperl_version.c
 -
 -/* a RCS ident(1) id string */
 -char ePerl_RCSIdentID[] =
--    "$Id: ePerl 2.2.14 02-08-1998 $";
+-    "$Id$";
 -
 -/* a WWW id string */
 -char ePerl_WebID[] =
@@ -9797,7 +9797,7 @@ diff -u -Naur eperl-2.2.14/etc/shtool eperl-2.2.14.fink/etc/shtool
 +        vGNU="${name} ${triple} (${tim})"
 +        vWeb="${name}/${triple}"
 +        vSCCS="@(#)${name} ${triple} (${tim})"
-+        vRCS="\$Id: ${name} ${triple} (${tim}) \$"
++        vRCS="\$Id${name} ${triple} (${tim}) \$"
 +    
 +        #   determine string out of filename
 +        #   (do NOT try to optimize this in any way because of portability)
