@@ -37,12 +37,10 @@ Depends: <<
 <<
 BuildDepends: <<
 	atk1 (>= 1.20.0-1),
-	autoconf (>= 2.60),
+	autoconf2.6,
 	audiofile,
-	automake1.9,
-	avahi-dev,
+	automake1.11,
 	cairo (>= 1.6-1),
-	dbus-dev (>= 1.0-1),
 	esound (>= 0.2.38-1),
 	expat1,
 	fink (>= 0.24.12-1),
@@ -56,6 +54,7 @@ BuildDepends: <<
 	gnome-vfs2-unified-dev (>= 1:2.20.0-1),
 	gtk+2-dev (>= 2.14.3-1),
 	libart2,
+	libavahi-common3-dev,
 	libavahi-glib1-dev,
 	libbonobo2-dev (>= 2.20.0-1),
 	libbonoboui2-dev (>= 2.20.0-1),
