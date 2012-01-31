@@ -1078,7 +1078,7 @@ diff -Nurd spim-7.4.ori/xspim/Makefile spim-7.4/xspim/Makefile
  #
  # SPIM is distributed under the following conditions:
 @@ -1065,171 +22,195 @@
- # $Header: $
+ # $Header$
  
  #
 -# To make xpsim, type:
