@@ -11,7 +11,7 @@ diff -Nurd -x'*~' xrootconsole-0.6.orig/Makefile xrootconsole-0.6/Makefile
 -MANDIR = /usr/local/share/man/man1
 +MANDIR = $(prefix)/share/man/man1
  
- VERSION = $(shell tag=$$(echo '$$Name: RELEASE-0_6 $$' | sed -e 's/\$$//g' -e 's/Name://g'); \
+ VERSION = $(shell tag=$$(echo '$$Name$$' | sed -e 's/\$$//g' -e 's/Name://g'); \
          if [ $$tag ]; \
 @@ -48,15 +48,15 @@
  
