@@ -466,7 +466,7 @@ diff -ruP tmake-1.7/lib/darwin-c++/tmake.conf tmake-1.7-patched/lib/darwin-c++/t
 +++ tmake-1.7-patched/lib/darwin-c++/tmake.conf	Wed Aug  1 19:56:06 2001
 @@ -0,0 +1,67 @@
 +#
-+# $Id: tmake-1.7-2.patch,v 1.1 2002/01/27 02:51:17 jem Exp $
++# $Id$
 +#
 +# tmake configuration for linux-g++
 +#
