@@ -30,7 +30,7 @@ diff -Nurd -x'*~' indent-2.2.9.orig/src/comments.c indent-2.2.9/src/comments.c
 +#include "output.h"
  #include "parse.h"
  
- RCSTAG_CC ("$Id: comments.c,v 1.33 2002/08/04 17:08:41 david Exp $");
+ RCSTAG_CC ("$Id$");
 diff -Nurd -x'*~' indent-2.2.9.orig/src/indent.h indent-2.2.9/src/indent.h
 --- indent-2.2.9.orig/src/indent.h	2002-11-10 16:02:48.000000000 -0500
 +++ indent-2.2.9/src/indent.h	2005-12-02 15:11:47.000000000 -0500
