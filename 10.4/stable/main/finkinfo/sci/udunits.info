@@ -1,18 +1,17 @@
 Package: udunits
-Version: 1.12.9
+Version: 1.12.11
 Revision: 2
 Maintainer: Daniel Macks <dmacks@netspace.org>
 BuildDepends: fink (>= 0.24.12-1)
-Conflicts: %n2-dev
-Replaces: %n2-dev
 Source: ftp://ftp.unidata.ucar.edu/pub/%n/%n-%v.tar.gz
-Source-MD5: 2bf4ba7a92e4c45b9e6003a295ca4e65
+Source-MD5: 2d984c738be0d674ec774d03997fdd9c
 SourceDirectory: %n-%v/src
 PatchFile: %n.patch
 PatchFile-MD5: 68fac7a6ccb931445bd0739a4b2bd433
 PatchScript: patch -p2 < %{PatchFile}
 SetCC: gcc
 SetCPPFLAGS: -Df2cFortran
+UseMaxBuildJobs: false
 CompileScript: <<
 	PERL='' MANDIR=%p/share/man ./configure %c
 	make MANDIR=%p/share/man
@@ -29,8 +28,8 @@ SplitOff: <<
 	Depends: %N (>= %v-%r)
 	BuildDependsOnly: true
 	Conflicts: %N2-dev
-	Replaces: %N (<< 1.12.9-2), %N2-dev
-	Files: include lib
+	Replaces: %N (<< 1.12.11-2), %N2-dev
+	Files: include lib share/man/man3
 	DocFiles: COPYRIGHT CUSTOMIZE ORIGIN README RELEASE_NOTES
 <<
 Description: Manipulation units of physical quantities
