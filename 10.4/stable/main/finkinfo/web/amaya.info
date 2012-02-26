@@ -1,11 +1,10 @@
 Package: 	amaya
 Version:	8.6
-Revision:	2
-Architecture: powerpc
-Distribution: 10.4
+Revision:	1002
+Distribution:	10.4, 10.5
 Maintainer:	Stephane GULLY <stephane.gully@inrialpes.fr>
 Depends:	glib-shlibs, imlib-shlibs (>= 1.9.14-2), gtk+-shlibs, gettext, libjpeg-shlibs, libpng3-shlibs
-BuildDepends:   glib, gtk+, imlib (>= 1.9.14-2), libjpeg, libpng3, gettext-bin, gettext-tools, gettext-dev, gcc3.3, fink (>= 0.24.12)
+BuildDepends:   fink (>= 0.24.12), glib, gtk+, imlib (>= 1.9.14-2), libjpeg, libpng3, gettext-bin, gettext-tools, gettext-dev, x11-dev
 Conflicts:	amaya-gtk
 Replaces:	amaya-gtk
 Source:		mirror:custom:amaya-src-%v.tgz
@@ -13,21 +12,25 @@ CustomMirror: <<
 	Primary:  ftp://ftp.w3.org/pub/amaya
 	ftp-US:   ftp://ftp.w3.org/pub/amaya
 <<
-SourceDirectory: Amaya
+NoSourceDirectory: true
+UseMaxBuildJobs: false
 NoSetLDFLAGS: true
-GCC: 3.3
+GCC: 4.0
 PatchFile: %n.patch
-PatchFile-MD5:62295a897de5dc476cb261453aa0d31f
-PatchScript: cd .. && sed 's|@FINK@|%p|g' < %{PatchFile} | patch -p0
+PatchFile-MD5: 741111f173cba0237c553469f3834ce9
+PatchScript: <<
+	%{default_script}
+	perl -pi -e 's|/sw|%p|g' Amaya/configure redland/configure
+<<
 CompileScript: <<
-	mkdir Darwin
-	export CC=gcc-3.3; export CXX=g++-3.3; cd 'Darwin' && ../configure --with-gtk --with-dav --enable-bookmarks --prefix=%p/share --bindir=%p/bin && make CC=gcc-3.3 CXX=g++-3.3
+	mkdir Amaya/Darwin
+	cd Amaya/Darwin && ../configure --with-gtk --with-dav --enable-bookmarks --prefix=%p/share --bindir=%p/bin && make
 <<
 InstallScript: <<
-	cd 'Darwin' && make install prefix=%i/share bindir=%i/bin
+	cd Amaya/Darwin && make install prefix=%i/share bindir=%i/bin
 	cd %i/bin && ln -sf ../share/Amaya/applis/bin/amaya amaya
 <<
-DocFiles:	README README.amaya amaya/COPYRIGHT
+DocFiles:	Amaya/README Amaya/README.amaya Amaya/amaya/COPYRIGHT
 Description:	W3C's Editor/Browser
 DescDetail: <<
 	Amaya is a complete web browsing and authoring 
@@ -45,11 +48,11 @@ DescPackaging: <<
 	Slight hack to make Amaya install in /sw/share/Amaya with
 	link from /sw/bin/amaya to amaya executable. (Default would
 	have /sw/Amaya, which isn't pretty).
-
- This version is compiled with g++-3.3, even in the 10.4 tree.  If it is
- ever updated to a more recent compiler, any packages which depend on
- this one must be updated at the same time.
 <<
+DescPort: <<
+	dmacks: The timezone variable is a glibc/linux feature. Use
+	struct tm member instead. Hope I got the sign correct!
+<< 	  
 License:	OSI-Approved
 Homepage:	http://www.w3.org/Amaya/
 Source-MD5:	a70d4fcb5c3f8d81eff78522dc7f8b01
