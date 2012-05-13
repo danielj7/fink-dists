@@ -207,28 +207,28 @@ diff -Naur texlive-20080816-source.orig/texk/tetex/fmtutil.cnf texlive-20080816-
 @@ -89,8 +89,8 @@
  eplain		pdftex	-		-translate-file=cp227.tcx *eplain.ini
  # ------------------------------------------------------------------
- # $Id: format.jadetex.cnf 8442 2008-05-31 23:30:56Z karl $
+ # $Id$
 -jadetex         pdftex	language.dat	&latex jadetex.ini
 -pdfjadetex      pdftex	language.dat	&pdflatex pdfjadetex.ini
 +#! jadetex         pdftex	language.dat	&latex jadetex.ini
 +#! pdfjadetex      pdftex	language.dat	&pdflatex pdfjadetex.ini
  # ------------------------------------------------------------------
- # $Id: format.latex.cnf 8442 2008-05-31 23:30:56Z karl $
+ # $Id$
  latex           pdftex	language.dat    -translate-file=cp227.tcx *latex.ini
 @@ -148,9 +148,14 @@
  # ------------------------------------------------------------------
- # $Id: format.xetex.cnf 8610 2008-06-09 00:47:52Z karl $
+ # $Id$
  # XeTeX-based formats.
 -xetex		xetex	language.def	-etex xetex.ini
 -xelatex		xetex	language.dat	-etex xelatex.ini
 +#! xetex		xetex	language.def	-etex xetex.ini
 +#! xelatex		xetex	language.dat	-etex xelatex.ini
  # ------------------------------------------------------------------
- # $Id: format.xmltex.cnf 8442 2008-05-31 23:30:56Z karl $
+ # $Id$
  xmltex          pdftex	language.dat	&latex xmltex.ini
  pdfxmltex       pdftex	language.dat	&pdflatex pdfxmltex.ini
 +# ------------------------------------------------------------------
-+# $Id: $
++# $Id$
 +# Japanese pTeX:
 +#! ptex		ptex	-		--kanji=default ptex.ini
 +#! platex		ptex	language.dat	--kanji=default platex.ini
