@@ -35,5 +35,8 @@ Shlibs: <<
 DescDetail: <<
 An ODBC database interface
 <<
+DescPackaging: <<
+  R (>= 3.0.0)
+<<
 
 <<
