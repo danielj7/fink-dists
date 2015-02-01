@@ -30,7 +30,8 @@ BuildDepends: fink (>= 0.30.2), module-build-tiny-pm%type_pkg[perl]
 DefaultScript: ModuleBuild
 
 InfoTest: TestDepends: <<
-	test-exception-pm, test-harness-pm%type_pkg[perl],
+	test-exception-pm,
+	test-harness-pm%type_pkg[perl],
 	test-simple-pm%type_pkg[perl] (>= 1.001014-2)
 <<
 
