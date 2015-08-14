@@ -1,13 +1,13 @@
 Package: gromacs
 Version: 5.1
-Revision: 100
+Revision: 1
 Depends: <<
 	gromacs1-shlibs (= %v-%r),
 	fftw3-shlibs (>= 3.3.4-2),
 	x11
 <<
 BuildDepends: <<
-	boost1.58-nopython,
+	boost1.55-nopython,
 	cmake,
 	fftw3 (>= 3.3.4-2),
 	x11-dev
@@ -33,7 +33,7 @@ Replaces: <<
 <<
 BuildDependsOnly: False
 UseMaxBuildJobs: True
-Distribution: 10.9, 10.10
+Distribution: 10.7, 10.8
 Source: mirror:custom:%n-%v.tar.gz
 Source-MD5: e5ba00d47c4c6dec107951a7d4605f31
 PatchFile: %n-libxml2.patch
@@ -69,7 +69,7 @@ mkdir build
 InstallScript: <<
 #!/bin/bash -efv
 cd build
-CMAKE_OPTIONS="-DBOOST_ROOT=%p/opt/boost-1_58 \
+CMAKE_OPTIONS="-DBOOST_ROOT=%p/opt/boost-1_55 \
 		-DGMX_GPU="OFF" \
 		-DGMX_FFT_LIBRARY=fftw3 \
 		-DGMX_X11="ON" \
