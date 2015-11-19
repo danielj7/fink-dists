@@ -1,14 +1,14 @@
 # -*- coding: ascii; tab-width: 4 -*-
-Package: libgit2.21
-Version: 0.21.1
-Revision: 2
+Package: libgit2.23
+Version: 0.23.4
+Revision: 1
 Description: C implementation of core git methods
 License: GPL2
 Maintainer: Daniel Johnson <daniel@daniel-johnson.org>
 
 Source: https://codeload.github.com/libgit2/libgit2/tar.gz/v%v
 SourceRename: libgit2-%v.tar.gz
-Source-MD5: cbf3422d54dd6f55f09855a6eb749f41
+Source-MD5: b7db3ab71dfa19fe1dc7fef76d6af216
 
 BuildDependsOnly: true
 BuildDepends: <<
@@ -36,7 +36,10 @@ CompileScript: <<
 # Tests require network access and -DBUILD_CLAR=ON
 #InfoTest: TestScript: make test || exit 2
 
-InstallScript: make install DESTDIR=%d
+InstallScript: <<
+	make install DESTDIR=%d
+	perl -pi -e 's/Libs\.private.*$//' %i/lib/pkgconfig/libgit2.pc
+<<
 
 Homepage: http://libgit2.github.com
 DescDetail: <<
@@ -58,7 +61,7 @@ SplitOff: <<
 		lib/libgit2.*.dylib
 	<<
 	Shlibs: <<
-		%p/lib/libgit2.21.dylib 21.0.0 %n (>= 0.21.1-1)
+		%p/lib/libgit2.23.dylib 23.0.0 %n (>= 0.23.4-1)
 	<<
 	DocFiles: AUTHORS CONTRIBUTING.md CONVENTIONS.md COPYING README.md
 <<
