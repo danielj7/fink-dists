@@ -2,8 +2,8 @@ Info2: <<
 Package: tree-simple-pm
 Version: 1.23
 Revision: 1
-Distribution: 10.9
-Type: perl, systemperl (5.16.2)
+Distribution: 10.10, 10.11, 10.12
+Type: perl, systemperl (5.18.2)
 Description: OO implementation of a simple n-ary tree
 License: Artistic/GPL
 Maintainer: Christian Schaffner <chris01@users.sourceforge.net>
