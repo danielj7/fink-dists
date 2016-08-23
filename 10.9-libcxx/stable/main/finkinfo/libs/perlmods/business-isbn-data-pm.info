@@ -1,0 +1,12 @@
+Package: business-isbn-data-pm
+Version: 20140910.003
+Revision: 1
+Description: International Standard Book Numbers
+Type: perl
+License: Artistic/GPL
+Maintainer: Daniel Macks <dmacks@netspace.org>
+Source: mirror:cpan:authors/id/B/BD/BDFOY/Business-ISBN-Data-%v.tar.gz
+Source-MD5: e45aba8cb0ed856c8633d874a0bf1f5b
+DocFiles: Changes LICENSE README.pod
+UpdatePOD: true
+Homepage: http://search.cpan.org/dist/Business-ISBN-Data
