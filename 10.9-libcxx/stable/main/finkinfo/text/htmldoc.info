@@ -1,0 +1,88 @@
+Info2: <<
+Package: htmldoc%type_pkg[-nox]
+Type: -nox (-nox)
+Conflicts: htmldoc, htmldoc-nox
+Replaces: htmldoc, htmldoc-nox
+Version: 1.8.28
+Revision: 103
+GCC: 4.0
+Source: http://www.msweet.org/files/project1/%{ni}-%v-source.tar.bz2
+SourceDirectory: %{ni}-%v
+Source-MD5: 8e4e3f49ee9b2c5af01eb81a518ce7e7
+Depends: <<
+  (%type_raw[-nox] != -nox) fltk-x11-shlibs,
+  libjpeg9-shlibs,
+  libpng16-shlibs,
+  (%type_raw[-nox] != -nox) x11
+<<
+BuildDepends: <<
+  fink-package-precedence,
+  (%type_raw[-nox] != -nox) fltk-x11,
+  libjpeg9,
+  libpng16,
+  (%type_raw[-nox] != -nox) x11-dev
+<<
+PatchFile: %{ni}.patch
+PatchFile-MD5: c399f3b04a89857bf2e4365d3700e92d
+ConfigureParams: <<
+	(%type_raw[-nox] = -nox) --with-gui=no (%type_raw[-nox] != -nox) --with-gui=yes \
+	(%type_raw[-nox] = -nox) FLTKCONFIG=/bin/false \
+	--disable-localjpeg --disable-localpng --disable-localzlib \
+	ac_cv_search___res_init=-lresolv \
+	--enable-cdsassl --disable-gnutls --disable-openssl
+<<
+SetCFLAGS: -MD
+SetCXXFLAGS: -MD -I%p/include
+CompileScript: <<
+	%{default_script}
+	fink-package-precedence --depfile-ext='\.d' .
+<<
+InstallScript: <<
+make install prefix=%i mandir=%i/share/man bindir=%i/bin datadir=%i/share/htmldoc
+<<
+DocFiles: CHANGES.txt COMPILE.txt COPYING.txt README.txt
+Description: Converts HTML files to PDF or PostScript
+DescDetail: <<
+  * Converts HTML files to PDF or PostScript
+  * Generates a table-of-contents for books
+  * Generates indexed HTML files
+  * Generates files on-the-fly for web applications, from the command-
+    line for batch jobs.
+  * Provides a command-line interface for batch and WWW applications.
+<<
+License: GPL
+Maintainer: Daniel Macks <dmacks@netspace.org>
+Homepage: https://www.msweet.org/projects.php/HTMLDOC
+DescPackaging: <<
+	Former maintainer: Sjors Gielen <dazjorz@dazjorz.com>
+
+	Gives preference to Security.framework to openssl on darwin,
+	so not overriding this default when possible, or else using
+	other system support to avoid larger fink dep tree.
+
+	Work around old CUPS on 10.7 (no harm on newer, and codeblock
+	only used for openssl mode, which we only use on 10.7). See:
+	https://build-test.opensuse.org/package/view_file/home:coolo:test/htmldoc/htmldoc-cups_rand.patch?expand=1
+
+	http-private.h contains copy of some CUPS headers that has
+	extern prototypes that no longer match Security.framework
+	based on material not present in configure.in and that are not
+	used by htmldoc anyway. Remove the unused stuff. Bug report:
+	https://sourceforge.net/p/fink/mailman/message/34601746/
+
+	Autodetects fltk-config even if gui option disabled, which
+	propagates various flags (including -I). Autodetects external
+	jpeg/png libs but does not look for special -I for them, and
+	mixes up the meanings of CFLAGS/CXXFLAGS vs CPPFLAGS.
+	Therefore we hardcode fink's -I for jpeg/png in CXXFLAGS and
+	force non-detection of fltk-config for !gui variant.
+<<
+DescPort: <<
+	dmacks: Apple's resolv.h has:
+		#define res_init res_9_init
+	so tests for the res_init symbol are off-target. Fink has
+	libbind6 has resolv.h without the renaming game, but we'll
+	keep this package lightweight and shortcircuit the test
+	(picking apple's) instead.
+<<
+<<
