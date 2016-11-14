@@ -1,0 +1,144 @@
+Package: libjasper.1-shlibs
+Version: 1.900.1
+Revision: 9
+BuildDepends: <<
+	autoconf2.6,
+	automake1.15,
+	fink (>= 0.32),
+	fink-package-precedence,
+	freeglut2,
+	libjpeg9,
+	libtool2,
+	x11-dev
+<<
+Depends: <<
+	libjpeg9-shlibs
+<<
+Source: http://www.ece.uvic.ca/~mdadams/jasper/software/jasper-%v.zip
+Source-MD5: a342b2b4495b3e1394e161eb5d85d754
+Source2: mirror:debian:pool/main/j/jasper/jasper_%v-debian1-2.4.debian.tar.xz
+Source2-MD5: 5005a6124ed2d705e1beb7ea0e385c9e
+PatchFile: %n.patch
+PatchFile-MD5: a514c0d24626da18e4356667aabdfc1c
+PatchScript: <<
+#!/bin/sh -ev
+	for file in \
+		01-misc-fixes.patch \
+		02-fix-filename-buffer-overflow.patch \
+		03-CVE-2011-4516-and-CVE-2011-4517.patch \
+		04-CVE-2014-9029.patch \
+		05-CVE-2014-8137.patch \
+		06-CVE-2014-8138.patch \
+		07-CVE-2014-8157.patch \
+		08-CVE-2014-8158.patch \
+	; do
+		echo "applying $file"
+		patch -p1 < ../debian/patches/$file
+	done
+	%{default_script}
+	mkdir m4
+	find . -name Makefile.am | xargs perl -pi -e 's/INCLUDES/AM_CPPFLAGS/'
+<<
+ConfigureParams: --enable-shared --disable-static --enable-dependency-tracking
+CompileScript: <<
+	autoreconf -fi
+	%{default_script}
+	fink-package-precedence --prohibit-bdep=libjasper.1 .
+<<
+InstallScript: <<
+	make install DESTDIR=%d
+	perl -pi -e 's,^(\s*#\s*define\s*PACKAGE.*),/* \1 */,' %i/include/jasper/*.h
+	perl -pi -e 's,^(\s*#\s*define\s*LT_OBJDIR.*),/* \1 */,' %i/include/jasper/*.h
+<<
+DocFiles: COPYRIGHT LICENSE NEWS README
+Shlibs: %p/lib/libjasper.1.dylib 2.0.0 %n (>= 1.900.1-1)
+SplitOff: <<
+	Package: libjasper.1
+	Depends: <<
+		%N (= %v-%r), 
+		libjpeg9-shlibs
+	<<
+	Conflicts: libjasper1
+	Replaces: libjasper1
+	BuildDependsOnly: True
+	Files: <<
+		bin/tmrdemo
+		include
+		lib/libjasper.{dylib,la}
+	<<
+	DocFiles: COPYRIGHT LICENSE NEWS README doc/jasper.pdf doc/jpeg2000.pdf
+<<
+SplitOff2: <<
+	Package: jasper-bin
+	Depends: <<
+		%N (>= %v-%r), 
+		freeglut2-shlibs,
+		libjpeg9-shlibs,
+		x11
+	<<
+	Replaces: <<
+		libjasper1-bin (<< 1.900.1-9),
+		jiv (<< 1.900.1-9)
+	<<
+	Files: <<
+		bin
+		share/man
+	<<
+	DocFiles: COPYRIGHT LICENSE NEWS README
+<<
+SplitOff3: <<
+	Package: libjasper1-bin
+	RuntimeDepends: <<
+		jasper-bin,
+		fink-obsolete-packages
+	<<
+	InstallScript: <<
+		mkdir -p %i/share/doc/installed-packages
+		touch %i/share/doc/installed-packages/%n
+	<<
+	Description: OBSOLETE: use jasper-bin
+<<
+SplitOff4: <<
+	Package: jiv
+	RuntimeDepends: <<
+		jasper-bin,
+		fink-obsolete-packages
+	<<
+	InstallScript: <<
+		mkdir -p %i/share/doc/installed-packages
+		touch %i/share/doc/installed-packages/%n
+	<<
+	Description: OBSOLETE: use jasper-bin
+<<
+DescPackaging: <<
+	Version 1.900.1 stopped using libtool -release, so the
+	install_name has changed to be a more stable
+	install_name. Need new %n (old %n wasn't quite up to spec)
+	hence "libjasper.1" vs old "libjasper1".
+
+	Remove private internal/buildtime tokens from public headers.
+
+	Fix a bunch of implicit declaration warnings. Has since been
+	reported with equiv patches on jasper-discussion mailing list:
+		Subject: Compiler warnings in jasper 1.900.1
+
+	Reduce useless IBD that other platforms need for glut (but we
+	actually need GL and GLU directly here). Should switch to
+	PKG_CHECK_MODULES?
+
+	Two packages of binaries, not sure why; one is libversioned
+	but doesn't even match version-naming convention of lib
+	package. And both were "= %v-%r" for the shlibs, which makes a
+	messy upgrade when new libversion comes along. Less messy to
+	and long-term more supportable to unify the binaries in a new
+	package, not libversioned, ">=", and mark others OBSOLETE.
+<<
+Description: Library for manipulating JPEG-2000 images
+DescDetail: <<
+The JasPer Project is an open-source initiative to provide a free
+software-based reference implementation of the codec specified in the
+JPEG-2000 Part-1 standard (i.e., ISO/IEC 15444-1).
+<<
+License: BSD
+Homepage: http://www.ece.uvic.ca/~mdadams/jasper/
+Maintainer: Daniel Macks <dmacks@netspace.org>
