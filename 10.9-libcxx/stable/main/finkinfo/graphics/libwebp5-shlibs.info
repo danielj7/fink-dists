@@ -1,0 +1,90 @@
+# -*- coding: ascii; tab-width: 4 -*-
+Package: libwebp5-shlibs
+Version: 0.4.4
+Revision: 1
+Description: Library for manipulating WebP format
+DescDetail: <<
+	WebP is a method of lossy compression that can be used on photographic
+	images. The degree of compression is adjustable so a user can choose
+	the trade-off between file size and image quality.
+
+	A WebP file consists of VP8 image data, and a container based on RIFF.
+	Webmasters, web developers and browser developers can use the WebP
+	format to create smaller, better looking images that can help make the
+	web faster.
+<<
+DescPackaging: <<
+	Will not build in the presence of freeglut so BuildConflicts with it.
+	configure expects to only find OpenGL.framework on OS X and gets
+	horribly confused by another GL. No easy way to fix.
+<<
+License: BSD
+Homepage: http://code.google.com/speed/webp/
+Maintainer: Daniel Johnson <daniel@daniel-johnson.org>
+
+Source: http://downloads.webmproject.org/releases/webp/libwebp-%v.tar.gz
+Source-MD5: b737062cf688e502b940b460ddc3015f
+
+BuildDepends: <<
+	fink-package-precedence,
+	giflib7,
+	libjpeg9 (>= 9-3),
+	libpng16,
+	libtiff5,
+	pkgconfig
+<<
+BuildConflicts: freeglut, freeglut2
+
+ConfigureParams: <<
+	--enable-dependency-tracking \
+	--disable-static \
+	--enable-libwebpmux \
+	--enable-libwebpdemux \
+	--enable-libwebpdecoder
+<<
+
+CompileScript: <<
+	%{default_script}
+	fink-package-precedence .
+<<
+
+InstallScript: <<
+	make install DESTDIR=%d
+	/bin/rm -rf %i/include %i/lib/*.la %i/lib/pkgconfig %i/lib/libwebp.dylib %i/lib/libwebpdecoder.dylib %i/lib/libwebpdemux.dylib %i/lib/libwebpmux.dylib
+<<
+
+Shlibs: <<
+	%p/lib/libwebp.5.dylib 6.0.0 %n (>= 0.4.0-1)
+	%p/lib/libwebpdecoder.1.dylib 2.0.0 %n (>= 0.4.0-1)
+	%p/lib/libwebpdemux.1.dylib 2.0.0 %n (>= 0.4.0-1)
+	%p/lib/libwebpmux.1.dylib 2.0.0 %n (>= 0.4.0-1)
+<<
+
+DocFiles: AUTHORS ChangeLog COPYING NEWS PATENTS README
+
+SplitOff: <<
+	Package: %N-bin
+	Description: Utilities to convert webp <-> png/jpeg
+	DescUsage: <<
+		Includes utilities:
+			cwebp - Encodes png/jpeg to webp
+			dwebp - Decodes webp to png/jpeg
+			gif2webp - Encodes gif to webp
+			vwebp - Displays webp files with OpenGL
+			webpmux - Create WebP Mux/container file
+	<<
+	
+	Depends: <<
+		%N (>= %v-%r),
+		giflib7-shlibs,
+		libjpeg9-shlibs (>= 9-3),
+		libpng16-shlibs,
+		libtiff5-shlibs
+	<<
+	Conflicts: libwebp0-bin, libwebp2-bin, libwebp4-bin, libwebp5-bin, libwebp6-bin
+	Replaces: libwebp0-bin, libwebp2-bin, libwebp4-bin, libwebp5-bin, libwebp6-bin
+
+	Files: bin share
+	
+	DocFiles: AUTHORS ChangeLog COPYING NEWS PATENTS README
+<<
